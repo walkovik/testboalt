@@ -14,18 +14,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+/**
+ * Some public access routes, grouped into 'auth' for convenience.
+ */
 Route::group(['prefix' => 'auth'], function () {
+    // Login.
     Route::post('login', 'Auth\LoginController@login');
+    // Register.
     Route::post('register', 'Auth\RegisterController@register');
-
 });
 
+/**
+ * Some private access routes, user must be logged into the API in order to access these resources.
+ */
 Route::group(['middleware' => 'auth:api'], function () {
+    // Get user information.
     Route::get('user', 'UserController@information');
+    // CRUD for notifications.
     Route::apiResource('notifications', 'NotificationController');
-
+    // Get some data from Yelp API.
+    // Route::get('getYelpData', 'YelpController');
+    // Update Notification status.
     Route::put('notification-status/{id}', 'NotificationController@updateStatus');
 });
-
-

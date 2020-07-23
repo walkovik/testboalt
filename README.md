@@ -41,7 +41,11 @@ composer install
 ### Swagger documentation
 Swagger have been used to display the documentation of the application. Although there are better ways to display this rather than adding all this code to the DocBlock, for time reason I will add this code there.
 
-Go to
+First, run 
+```
+php artisan serve
+```
+Then, go to
 ```
 http://localhost:8000/api/documentation
 ```
