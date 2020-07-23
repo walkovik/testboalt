@@ -1,13 +1,24 @@
-/node_modules
+# Laravel
 /public/hot
 /public/storage
 /storage/*.key
 /vendor
 .env
+.env.example
 .env.backup
-.phpunit.result.cache
 Homestead.json
 Homestead.yaml
+
+# IDE
+.idea/
+
+# Node/Yarn
+/node_modules
 npm-debug.log
 yarn-error.log
-.idea/
+
+# Apple
+.DS_Store
+
+# PHPUnit
+.phpunit.result.cache
