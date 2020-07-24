@@ -17,7 +17,7 @@ class LoginController extends Controller
     /**
      * @OA\Post(
      *     path="/api/auth/login",
-     *   tags={"Login"},
+     *     tags={"Login"},
      *     summary="Login user to the api",
      *      @OA\Parameter(
      *        name="email",
@@ -44,7 +44,7 @@ class LoginController extends Controller
      *     ),
      *     @OA\Response(
      *         response="default",
-     *         description="unauthenticated"
+     *         description="Unauthenticated"
      *     )
      * )
      * @param LoginRequest $request

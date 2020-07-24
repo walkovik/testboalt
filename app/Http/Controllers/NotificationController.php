@@ -11,7 +11,7 @@ class NotificationController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
@@ -23,7 +23,7 @@ class NotificationController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(UserNotificationRequest $request)
     {
@@ -35,7 +35,7 @@ class NotificationController extends Controller
      * Display the specified resource.
      *
      * @param  UserNotification $notification
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show(UserNotification $notification)
     {
@@ -47,24 +47,66 @@ class NotificationController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(\Illuminate\Http\Request $request, int $id)
+    public function update(Request $request, int $id)
     {
-        //
+        $request->validate([
+            'title'   => 'required',
+            'content' => 'required',
+            'is_read' => 'required|boolean'
+        ]);
+        $notification = UserNotification::find($id);
+        $notification->title   = $request->title;
+        $notification->content = $request->input('content');
+        $notification->is_read = $request->is_read;
+        $notification->save();
+        return response()->json($notification, 200);
     }
 
-
     /**
-     * Update the status of notifications
+     * Update the status of notifications.
+     *
+     * @OA\Put(
+     *     path="/api/updateNotificationStatus/{id}",
+     *     tags={"Update Notification Status"},
+     *     summary="Update the status of a notification given its ID",
+     *      @OA\Parameter(
+     *        name="is_read",
+     *        in="query",
+     *        required=true,
+     *        @OA\Schema(
+     *           type="string"
+     *        )
+     *      ),
+     *     @OA\Parameter(
+     *        name="id",
+     *        in="query",
+     *        required=true,
+     *        @OA\Schema(
+     *           type="string"
+     *        )
+     *      ),
+     *     @OA\Response(
+     *      response=200,
+     *      description="Notification Status updated successfully",
+     *      @OA\MediaType(
+     *          mediaType="application/json",
+     *       )
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="unauthenticated"
+     *     )
+     * )
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function updateStatus(\Illuminate\Http\Request $request, int $id)
+    public function updateStatus(Request $request, int $id)
     {
-        $request->validate([ 'is_read' => 'required' ]);
+        $request->validate(['is_read' => 'required']);
         $notification = UserNotification::find($id);
         $notification->is_read = $request->is_read;
         $notification->save();
@@ -75,7 +117,7 @@ class NotificationController extends Controller
      * Remove the specified resource from storage.
      *
      * @param UserNotification $notification
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(UserNotification $notification)
     {

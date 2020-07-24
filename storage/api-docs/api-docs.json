@@ -47,6 +47,90 @@
                     }
                 }
             }
+        },
+        "/api/auth/register": {
+            "post": {
+                "tags": [
+                    "Register"
+                ],
+                "summary": "Register user to the api",
+                "operationId": "App\\Http\\Controllers\\Auth\\RegisterController::register",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "User successfully registered",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "unauthenticated"
+                    }
+                }
+            }
+        },
+        "/api/updateNotificationStatus/{id}": {
+            "put": {
+                "tags": [
+                    "Update Notification Status"
+                ],
+                "summary": "Update the status of a notification given its ID",
+                "operationId": "App\\Http\\Controllers\\NotificationController::updateStatus",
+                "parameters": [
+                    {
+                        "name": "is_read",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Notification Status updated successfully",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "unauthenticated"
+                    }
+                }
+            }
         }
     }
 }
