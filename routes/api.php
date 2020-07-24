@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     // CRUD for notifications.
     Route::apiResource('notifications', 'NotificationController');
     // Get some data from Yelp API.
-    // Route::get('getYelpData', 'YelpController');
+    // Route::get('get-yelp-data', 'YelpController');
     // Update Notification status.
     Route::put('notification-status/{id}', 'NotificationController@updateStatus');
 });
