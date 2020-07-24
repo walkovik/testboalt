@@ -28,9 +28,7 @@ git clone git@github.com:walkovik/testboalt.git
 ```
 
 ### Install External Dependencies
-Composer is used as a dependency manager and autoloader
-
-To install external dependencies and setup the autoloader, make sure composer is installed and run the following command from the application root:
+Composer is used as a dependency manager and autoloader, to install external dependencies and setup the autoloader, make sure composer is installed and run the following command from the application root:
 ```
 composer install
 ```
@@ -59,7 +57,11 @@ with
 ```
 DB_CONNECTION=sqlite
 ```
-
+### Yelp API Key
+In order to access to Yelp functionality, you need to add a valid API Key, go to your .env file and add your key in the corresponding line, located at the very bottom of the document
+```
+YELP_API_KEY='Your-Api_Key'
+```
 ### Running migrations
 With our DB set, we can run our migrations file and seed our db.
 ```
