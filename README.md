@@ -33,6 +33,15 @@ Composer is used as a dependency manager and autoloader, to install external dep
 composer install
 ```
 
+### Create your .env file
+```
+cp .env.example .env 
+```
+Now, generate your key so your app can run.
+```
+php artisan key:generate 
+```
+
 ### Database
 You can use sqlite for fastest and easiest setup of the app. Just follow next steps:
 
@@ -40,11 +49,7 @@ In your console, type the following command
 ```
 touch database/database.sqlite
 ```
-This will create an empty SQLite DB File. Now, create an .env file
-```
-cp .env.example .env 
-```
-Go to the database section lines (around line 9) and replace the following lines
+This will create an empty SQLite DB File. Go to the database section lines (around line 9) and replace the following lines
 ```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -68,10 +73,17 @@ With our DB set, we can run our migrations file and seed our db.
 php artisan migrate --seed
 ```
 
+### Passport 
+After running your migrations, initialize passport.
+```
+php artisan passport:install
+```
+This will create your personal access and grant clients.
+
 ### Swagger documentation
 Swagger have been used to display the documentation of the application. Although there are better ways to display this rather than adding all this code to the DocBlock, for time reason I will add this code there.
 
-First, run 
+First, run
 ```
 php artisan l5-swagger:generate
 ```
@@ -79,6 +91,13 @@ Then, go to
 ```
 http://localhost:8000/api/documentation
 ```
+
+### Run server
+Run 
+```
+php artisan serve
+```
+to load the application, this command must be used in order to use postman links, if you use another server instance please update postman URL to your server instance.
 
 ### Running tests
 Some functional tests have been added to verify the proper behaviour of the application, you can run those tests using the following command
@@ -90,11 +109,10 @@ or
 php artisan test 
 ```
 
-### Run server
-Run 
+### Remove all notifications
+If you want to remove all notifications, run
 ```
-php artisan serve
+php artisan user-notifications:clear
 ```
-to load the application, this command must be used in order to use postman links, if you use another server instance please update postman URL to your server instance.
 
 And away yo go...!!!!

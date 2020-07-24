@@ -7,7 +7,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <!-- Styles -->
-        <link href="{{ asset('assets/style.css') }}">
+        <link href="{{ asset('assets/style.css') }}" rel="stylesheet" >
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -15,8 +15,8 @@
                 <div class="title m-b-md">TestBoalt</div>
                 <div class="links">
                     <a href="https://github.com/walkovik/testboalt">Github & README</a>
-                    <a href="#"
-                       title="Download Postman File">Postman Files</a>
+                    <a href="/resources/postman.json"
+                       title="Download Postman File" download>Postman Files</a>
                     <a href="http://localhost:8000/api/documentation"
                        title="must run php artisan serve first">Swagger Documentation</a>
                 </div>

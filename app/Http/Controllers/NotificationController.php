@@ -122,6 +122,7 @@ class NotificationController extends Controller
     public function destroy(UserNotification $notification)
     {
         $notification->delete();
+        //return response()->json(['message' => 'Deleted successfully'], 200);
         return response()->json(null, 204);
     }
 }
