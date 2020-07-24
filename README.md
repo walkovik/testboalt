@@ -35,15 +35,43 @@ To install external dependencies and setup the autoloader, make sure composer is
 composer install
 ```
 
-### Another one
+### Database
+You can use sqlite for fastest and easiest setup of the app. Just follow next steps:
 
+In your console, type the following command
+```
+touch database/database.sqlite
+```
+This will create an empty SQLite DB File. Now, create an .env file
+```
+cp .env.example .env 
+```
+Go to the database section lines (around line 9) and replace the following lines
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+```
+with
+```
+DB_CONNECTION=sqlite
+```
+
+### Running migrations
+With our DB set, we can run our migrations file and seed our db.
+```
+php artisan migrate --seed
+```
 
 ### Swagger documentation
 Swagger have been used to display the documentation of the application. Although there are better ways to display this rather than adding all this code to the DocBlock, for time reason I will add this code there.
 
 First, run 
 ```
-php artisan serve
+php artisan l5-swagger:generate
 ```
 Then, go to
 ```
@@ -53,6 +81,18 @@ http://localhost:8000/api/documentation
 ### Running tests
 Some functional tests have been added to verify the proper behaviour of the application, you can run those tests using the following command
 ```
-php artisan ???
+vendor/bin/phpunit 
+```
+or 
+```
+php artisan test 
 ```
 
+### Run server
+Run 
+```
+php artisan serve
+```
+to load the application, this command must be used in order to use postman links, if you use another server instance please update postman URL to your server instance.
+
+And away yo go...!!!!
