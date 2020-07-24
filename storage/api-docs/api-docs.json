@@ -43,7 +43,7 @@
                         }
                     },
                     "default": {
-                        "description": "unauthenticated"
+                        "description": "Unauthenticated"
                     }
                 }
             }
@@ -89,12 +89,152 @@
                         }
                     },
                     "default": {
-                        "description": "unauthenticated"
+                        "description": "Unauthenticated"
                     }
                 }
             }
         },
-        "/api/updateNotificationStatus/{id}": {
+        "/api/notifications": {
+            "get": {
+                "tags": [
+                    "Show All Notifications"
+                ],
+                "summary": "Display all notifications to the user",
+                "operationId": "App\\Http\\Controllers\\NotificationController::index",
+                "responses": {
+                    "200": {
+                        "description": "Showing all notifications",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Create Notification"
+                ],
+                "summary": "Create a new notification",
+                "operationId": "App\\Http\\Controllers\\NotificationController::store",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "content",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Notification created succesfully",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
+        "/api/notifications/{id}": {
+            "get": {
+                "tags": [
+                    "Show Notification"
+                ],
+                "summary": "Show a notification given its ID",
+                "operationId": "App\\Http\\Controllers\\NotificationController::show",
+                "responses": {
+                    "200": {
+                        "description": "Shows the notification to the user",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Update Notification"
+                ],
+                "summary": "Update a notification given its ID",
+                "operationId": "App\\Http\\Controllers\\NotificationController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Notifcation successfully updated",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Delete Notification"
+                ],
+                "summary": "Delete a notification given its ID",
+                "operationId": "App\\Http\\Controllers\\NotificationController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "null",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
+        "/api/notification-status/{id}": {
             "put": {
                 "tags": [
                     "Update Notification Status"
@@ -128,6 +268,62 @@
                     },
                     "default": {
                         "description": "unauthenticated"
+                    }
+                }
+            }
+        },
+        "/api/user": {
+            "get": {
+                "tags": [
+                    "Display User Information"
+                ],
+                "summary": "Display all data of current user",
+                "operationId": "App\\Http\\Controllers\\UserController::information",
+                "responses": {
+                    "200": {
+                        "description": "User data retrieved successfully",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
+        "/api/get-yelp-data/{id}": {
+            "get": {
+                "tags": [
+                    "Get Yelp Data"
+                ],
+                "summary": "Retrieve business information through Yelp API",
+                "operationId": "App\\Http\\Controllers\\YelpController::makeRequest",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User successfully logged in",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Business not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "Unauthenticated"
                     }
                 }
             }

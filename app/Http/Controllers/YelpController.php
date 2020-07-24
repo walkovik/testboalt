@@ -12,6 +12,38 @@ class YelpController extends Controller
     /**
      * Make Request.
      *
+     * @OA\Get(
+     *   path="/api/get-yelp-data/{id}",
+     *   tags={"Get Yelp Data"},
+     *   summary="Retrieve business information through Yelp API",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="query",
+     *     required=true,
+     *     @OA\Schema(
+     *       type="string"
+     *     )
+     *   ),
+     *   @OA\Response(
+     *     response=200,
+     *     description="User successfully logged in",
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *     )
+     *   ),
+     *   @OA\Response(
+     *     response=404,
+     *     description="Business not found",
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *     )
+     *   ),
+     *   @OA\Response(
+     *     response="default",
+     *     description="Unauthenticated"
+     *   )
+     * )
+     *
      * @param $qry_params
      * @return array
      * @throws \Exception

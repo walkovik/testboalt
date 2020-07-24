@@ -13,44 +13,44 @@ class RegisterController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/auth/register",
-     *     tags={"Register"},
-     *     summary="Register user to the api",
-     *      @OA\Parameter(
-     *        name="name",
-     *        in="query",
-     *        required=true,
-     *        @OA\Schema(
-     *           type="string"
-     *        )
-     *      ),
-     *     @OA\Parameter(
-     *        name="email",
-     *        in="query",
-     *        required=true,
-     *        @OA\Schema(
-     *           type="string"
-     *        )
-     *      ),
-     *      @OA\Parameter(
-     *        name="password",
-     *        in="query",
-     *        required=true,
-     *        @OA\Schema(
-     *           type="string"
-     *        )
-     *     ),
-     *     @OA\Response(
-     *      response=201,
-     *      description="User successfully registered",
-     *      @OA\MediaType(
-     *          mediaType="application/json",
-     *       )
-     *     ),
-     *     @OA\Response(
-     *         response="default",
-     *         description="Unauthenticated"
+     *   path="/api/auth/register",
+     *   tags={"Register"},
+     *   summary="Register user to the api",
+     *   @OA\Parameter(
+     *     name="name",
+     *     in="query",
+     *     required=true,
+     *     @OA\Schema(
+     *       type="string"
      *     )
+     *   ),
+     *   @OA\Parameter(
+     *     name="email",
+     *     in="query",
+     *     required=true,
+     *     @OA\Schema(
+     *       type="string"
+     *     )
+     *   ),
+     *   @OA\Parameter(
+     *     name="password",
+     *     in="query",
+     *     required=true,
+     *     @OA\Schema(
+     *       type="string"
+     *     )
+     *   ),
+     *   @OA\Response(
+     *     response=201,
+     *     description="User successfully registered",
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *     )
+     *   ),
+     *   @OA\Response(
+     *     response="default",
+     *     description="Unauthenticated"
+     *   )
      * )
      * @param RegisterRequest $request
      * @return \Illuminate\Http\JsonResponse

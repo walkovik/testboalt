@@ -80,6 +80,7 @@ window.onload = function() {
     configUrl: {!! isset($configUrl) ? '"' . $configUrl . '"' : 'null' !!},
     validatorUrl: {!! isset($validatorUrl) ? '"' . $validatorUrl . '"' : 'null' !!},
     oauth2RedirectUrl: "{{ route('l5-swagger.oauth2_callback') }}",
+    supportedSubmitMethods: "{}",
 
     requestInterceptor: function() {
       this.headers['X-CSRF-TOKEN'] = '{{ csrf_token() }}';

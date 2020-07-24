@@ -16,36 +16,36 @@ class LoginController extends Controller
 {
     /**
      * @OA\Post(
-     *     path="/api/auth/login",
-     *     tags={"Login"},
-     *     summary="Login user to the api",
-     *      @OA\Parameter(
-     *        name="email",
-     *        in="query",
-     *        required=true,
-     *        @OA\Schema(
-     *           type="string"
-     *        )
-     *      ),
-     *      @OA\Parameter(
-     *        name="password",
-     *        in="query",
-     *        required=true,
-     *        @OA\Schema(
-     *           type="string"
-     *        )
-     *     ),
-     *     @OA\Response(
-     *      response=200,
-     *      description="User successfully logged in",
-     *      @OA\MediaType(
-     *          mediaType="application/json",
-     *       )
-     *     ),
-     *     @OA\Response(
-     *         response="default",
-     *         description="Unauthenticated"
+     *   path="/api/auth/login",
+     *   tags={"Login"},
+     *   summary="Login user to the api",
+     *   @OA\Parameter(
+     *     name="email",
+     *     in="query",
+     *     required=true,
+     *     @OA\Schema(
+     *       type="string"
      *     )
+     *   ),
+     *   @OA\Parameter(
+     *     name="password",
+     *     in="query",
+     *     required=true,
+     *     @OA\Schema(
+     *       type="string"
+     *     )
+     *   ),
+     *   @OA\Response(
+     *     response=200,
+     *     description="User successfully logged in",
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *     )
+     *   ),
+     *   @OA\Response(
+     *     response="default",
+     *     description="Unauthenticated"
+     *   )
      * )
      * @param LoginRequest $request
      * @return \Illuminate\Http\JsonResponse
