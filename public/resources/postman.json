@@ -283,12 +283,12 @@
 						},
 						{
 							"key": "title",
-							"value": "titulo actualizado ",
+							"value": "Updated title",
 							"type": "text"
 						},
 						{
 							"key": "content",
-							"value": "contenido actualizado 2",
+							"value": "Updated content",
 							"type": "text"
 						}
 					]
@@ -303,7 +303,7 @@
 					"path": [
 						"api",
 						"notifications",
-						"4"
+						"1"
 					]
 				}
 			},
@@ -490,7 +490,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/notification-status/8",
+					"raw": "http://localhost:8000/api/notification-status/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -499,7 +499,7 @@
 					"path": [
 						"api",
 						"notification-status",
-						"8"
+						"1"
 					]
 				}
 			},
