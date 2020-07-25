@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Redirect if authenticated
+ */
 namespace App\Http\Middleware;
 
 use App\Providers\RouteServiceProvider;
@@ -11,9 +13,9 @@ class RedirectIfAuthenticated
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string|null  $guard
+     * @param  \Illuminate\Http\Request $request The Request.
+     * @param  \Closure                 $next    The Next.
+     * @param  string|null              $guard   The Guard.
      * @return mixed
      */
     public function handle($request, Closure $next, $guard = null)

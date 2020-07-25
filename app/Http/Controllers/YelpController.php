@@ -1,16 +1,38 @@
 <?php
-
+/**
+ * Yelp Controller
+ * php version 7.2.10
+ *
+ * @category Components
+ * @package  None
+ * @author   Eduardo Sanchez <walkovik@gmail.com>
+ * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @version  GIT: @1.0.0
+ * @link     https://github.com/walkovik/testboalt
+ */
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 
+/**
+ * Class YelpController
+ *
+ * @category Components
+ * @package  App\Http\Controllers
+ * @author   Eduardo Sanchez <walkovik@gmail.com>
+ * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @version  Release: @1.0.0
+ * @link     https://github.com/walkovik/testboalt
+ */
 class YelpController extends Controller
 {
-    private const BASE_URL = 'https://api.yelp.com/v3/businesses/';
+    private const YELP_URL = 'https://api.yelp.com/v3/businesses/';
 
     /**
      * Make Request.
+     *
+     * @param $qry_params The Query Parameters.
      *
      * @OA\Get(
      *   path="/api/get-yelp-data/{id}",
@@ -44,11 +66,10 @@ class YelpController extends Controller
      *   )
      * )
      *
-     * @param $qry_params
      * @return array
      * @throws \Exception
      */
-    private function makeRequest($qry_params)
+    private function _makeRequest($qry_params)
     {
         $client = new Client();
         $api_key = env('YELP_API_KEY');
@@ -60,7 +81,11 @@ class YelpController extends Controller
             ]
         ];
         try {
-            $response = $client->request('GET',self::BASE_URL."$qry_params", $headers);
+            $response = $client->request(
+                'GET',
+                self::YELP_URL . "$qry_params",
+                $headers
+            );
             $data_body = [];
 
             if ($response->getStatusCode() == 200) {
@@ -77,13 +102,14 @@ class YelpController extends Controller
     /**
      * Get Data.
      *
-     * @param Request $request
+     * @param Request $request The Request
+     *
      * @return \Illuminate\Http\JsonResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getData(Request $request)
     {
-        $response = $this->makeRequest($request->get('id'));
+        $response = $this->_makeRequest($request->get('id'));
         return response()->json($response['data']);
     }
 
