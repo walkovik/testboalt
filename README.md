@@ -89,6 +89,16 @@ php artisan passport:install
 ```
 This will create your personal access and grant clients.
 
+### Run server
+Run 
+```
+php artisan serve
+```
+to load the application, this command must be used in order to use postman links, 
+if you use another server instance please update postman URL to your server instance.
+
+Now you can point your browser to http://localhost:8000/ and check if the app is properly displaying an intro page with some utility links.
+
 ### Swagger documentation
 Swagger have been used to display the documentation of the application. 
 Although there are better ways to display this rather than adding all this code to the DocBlock, 
@@ -108,14 +118,6 @@ or via the file itself located in the /public/resources folder.
 Please make sure to update the sections of the authorization parameter with your Yelp API key,
 and your token (generated after login) in order to properly fetch data while requesting through the API.
 
-### Run server
-Run 
-```
-php artisan serve
-```
-to load the application, this command must be used in order to use postman links, 
-if you use another server instance please update postman URL to your server instance.
-
 ### Running tests
 Some functional tests have been added to verify the proper behaviour of the application. 
 These tests have been added to the project to partially show my skills in TDD. 
@@ -134,4 +136,4 @@ If you want to remove all notifications, run
 php artisan user-notifications:clear
 ```
 
-And away yo go...!!!!
+And away yo go...!!! Thank you for your time!
